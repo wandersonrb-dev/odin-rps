@@ -27,3 +27,13 @@ function findWinner(playerSelection, computerSelection) {
             return (computerSelection === 'paper') ? 'player': 'computer';
     }
 }
+
+function playRound(playerSelection, computerSelection) {
+    const roundWinner = findWinner(playerSelection, computerSelection);
+    // If the round has no winner it's a tie.
+    if (!roundWinner) return "It's a tie, play another round!";
+    if (roundWinner === 'player') {
+        return `You Win! ${playerSelection} beats ${computerSelection}`
+    }
+    return `You Lose! ${computerSelection} beats ${playerSelection}`;
+}
