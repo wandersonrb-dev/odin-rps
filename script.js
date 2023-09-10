@@ -37,3 +37,16 @@ function playRound(playerSelection, computerSelection) {
     }
     return `You Lose! ${computerSelection} beats ${playerSelection}`;
 }
+
+function getPlayerChoice() {
+    const options = ['rock', 'paper', 'scissors'];
+    let playerChoice;
+    while(!options.includes(playerChoice)) {
+        playerChoice = prompt("Rock, Paper or Scissors? ");
+        // Exit the function if the player press the cancel button or press enter without type anything.
+        if (!playerChoice) return null;
+        playerChoice = playerChoice.toLocaleLowerCase();
+    }
+
+    return playerChoice;
+}
