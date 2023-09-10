@@ -14,3 +14,16 @@ function getComputerChoice() {
 function getRandomNumber(upperBound = 3) {
     return Math.floor(Math.random() * upperBound);
 }
+
+function findWinner(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) return null;
+
+    switch(playerSelection) {
+        case 'rock':
+            return (computerSelection === 'scissors') ? 'player' : 'computer';
+        case 'paper':
+            return (computerSelection === 'rock') ? 'player' : 'computer';
+        default:
+            return (computerSelection === 'paper') ? 'player': 'computer';
+    }
+}
