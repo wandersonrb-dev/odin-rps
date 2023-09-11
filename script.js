@@ -50,3 +50,16 @@ function getPlayerChoice() {
 
     return playerChoice;
 }
+
+function showWinner(scoreboard) {
+
+    console.log(`\t\t Player ${scoreboard['player']} - ${scoreboard['computer']} Computer`);
+
+    if (scoreboard['player'] > scoreboard['computer']) {
+        console.log('###### Congratulations! You have won the game! ######')
+    } else if (scoreboard['player'] < scoreboard['computer']) {
+        console.log('###### The Computer have won the game ######');
+    } else {
+        console.log('###### The game has ended in a tie ######')
+    }
+}
