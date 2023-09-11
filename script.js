@@ -1,3 +1,24 @@
+function playAGame(rounds = 5) {
+    const scoreboard = {'player': 0, 'computer': 0};
+    const updateScoreboard = (winner) => {
+        if (!winner) return;
+        winner === 'player' ? scoreboard['player']++ : scoreboard['computer']++;
+    }
+
+    let roundCouter = 0;
+    while(roundCouter < rounds) {
+        let computerChoice = getComputerChoice();
+        let playerChoice = getPlayerChoice();
+        if (!playerChoice) return 'You have exit the game!';
+
+        console.log(playRound(playerChoice, computerChoice));
+        updateScoreboard(findWinner(playerChoice, computerChoice));
+        roundCouter++;
+    }
+
+    showWinner(scoreboard);
+}
+
 
 function getComputerChoice() {
     switch (getRandomNumber(3)) {
