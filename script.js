@@ -21,14 +21,8 @@ function playAGame(rounds = 5) {
 
 
 function getComputerChoice() {
-    switch (getRandomNumber(3)) {
-        case 0:
-            return 'rock';
-        case 1:
-            return 'paper'
-        default:
-            return 'scissors'
-    }
+    const gameOptions = ['rock', 'paper', 'scissors'];
+    return gameOptions[getRandomNumber(3)];
 }
 
 // Return a random number between 0 up to no include upperBound 
