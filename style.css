@@ -37,7 +37,9 @@ body {
   display: flex;
   gap: 30px;
   margin-bottom: 60px;
+  justify-content: center;
 }
+
 .player-name,
 .cpu-name {
   font-size: 28px;
