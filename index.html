@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock, Paper, Scissors</title>
   <script src="script.js" defer></script>
 </head>
+
 <body>
-  <h1>Rock, Paper, Scissors</h1>
+
+  <div class="container">
+    <div class="header">
+      <h1>Rock Paper Scissors</h1>
+    </div>
+
+    <div class="main">
+      <div class="scoreboard">
+        <div class="player-name">Player</div>
+        <div class="scores">
+          <div class="player-score">0</div>
+          <div class="cpu-score">0</div>
+        </div>
+        <div class="cpu-name">Computer</div>
+      </div>
+
+      <div class="game-options">
+        <div class="rock">
+          <img src="./images/rock.svg" alt="rock" class="rock-icon">
+        </div>
+        <div class="paper">
+          <img src="./images/paper.svg" alt="paper" class="paper-icon">
+        </div>
+        <div class="scissors">
+          <img src="./images/scissors.svg" alt="scissors" class="scissors-icon">
+        </div>
+      </div>
+
+      <div class="display-message">
+        <p>Choose between Rock Paper Scissors!</p>
+      </div>
+
+      <button class="reset">Reset</button>
+
+    </div>
+
+    <div class="footer">
+      <p>Copyright &copy; <a href="https://github.com/wandersonrb-dev">wandersonrb-dev</a> 2023</p>
+    </div>
+  </div>
 </body>
+
 </html>
