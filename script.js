@@ -62,5 +62,8 @@ options.forEach(option => {
     option.addEventListener('click', (e) => {
         const playerChoice = option.id;
         const computerChoice = getComputerChoice();
+        const displayMessage = document.querySelector('.display-message p');
+
+        displayMessage.textContent = playRound(playerChoice, computerChoice);
     });
 });
