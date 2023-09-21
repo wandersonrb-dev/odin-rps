@@ -57,6 +57,19 @@ function showWinner(scoreboard) {
     }
 }
 
+function updateScoreBoard(winner) {
+    if (!winner) return;
+    let playerScore = document.querySelector('.player-score');
+    let computerScore = document.querySelector('.cpu-score');
+
+    if (winner === 'player'){
+        playerScore.textContent = parseInt(playerScore.textContent) + 1;
+    } else {
+        computerScore.textContent = parseInt(computerScore.textContent) + 1;
+    }
+
+}
+
 const options = document.querySelectorAll('.option');
 options.forEach(option => {
     option.addEventListener('click', (e) => {
@@ -65,5 +78,6 @@ options.forEach(option => {
         const displayMessage = document.querySelector('.display-message p');
 
         displayMessage.textContent = playRound(playerChoice, computerChoice);
+        updateScoreBoard(findWinner(playerChoice, computerChoice));
     });
 });
