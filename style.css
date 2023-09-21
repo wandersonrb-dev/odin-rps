@@ -117,3 +117,11 @@ body {
 .footer a {
   color: #E5C073;
 }
+
+.purple {
+  border: 5px solid #B0BCE8;
+}
+
+.red {
+  border: 5px solid #EB9F9F;
+}

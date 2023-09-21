@@ -78,6 +78,8 @@ function playRound() {
     const playerChoice = this.id;
     const computerChoice = getComputerChoice();
     const displayMessage = document.querySelector('.display-message p');
+    addBorder(playerChoice, 'purple');
+    addBorder(computerChoice, 'red')
     displayMessage.textContent = showRoundWinner(playerChoice, computerChoice);
     updateScoreBoard(findWinner(playerChoice, computerChoice));
 }
@@ -89,6 +91,10 @@ function resetGame() {
     scoreBoxes.forEach(box => box.textContent = 0);
     displayMessage.textContent = 'Choose between Rock, Paper and Scissors!';
     options.forEach(option => option.addEventListener('click', playRound));
+}
+
+function addBorder(option, color) {
+    document.querySelector(`#${option}`).classList.add(`${color}`);
 }
 
 const options = document.querySelectorAll('.option');
