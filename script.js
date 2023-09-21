@@ -21,7 +21,7 @@ function findWinner(playerSelection, computerSelection) {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function showRoundWinner(playerSelection, computerSelection) {
     const roundWinner = findWinner(playerSelection, computerSelection);
     // If the round has no winner it's a tie.
     if (!roundWinner) return "It's a tie, play another round!";
@@ -44,40 +44,59 @@ function getPlayerChoice() {
     return playerChoice;
 }
 
-function showWinner(scoreboard) {
-
-    console.log(`\t\t Player ${scoreboard['player']} - ${scoreboard['computer']} Computer`);
-
-    if (scoreboard['player'] > scoreboard['computer']) {
-        console.log('###### Congratulations! You have won the game! ######')
-    } else if (scoreboard['player'] < scoreboard['computer']) {
-        console.log('###### The Computer have won the game ######');
-    } else {
-        console.log('###### The game has ended in a tie ######')
+function showWinner(winner) {
+    const message = document.querySelector('.display-message p');
+    switch(winner) {
+        case 'player':
+            message.textContent = 'Congratulations! You have won the game!';
+            break;
+        case 'computer':
+            message.textContent = 'The Computer have won the game!';
     }
 }
 
 function updateScoreBoard(winner) {
     if (!winner) return;
-    let playerScore = document.querySelector('.player-score');
-    let computerScore = document.querySelector('.cpu-score');
+    const MAX_SCORE = 5;
+    let playerScoreBox = document.querySelector('.player-score');
+    let computerScoreBox = document.querySelector('.cpu-score');
 
     if (winner === 'player'){
-        playerScore.textContent = parseInt(playerScore.textContent) + 1;
+        let currentPlayerScore = parseInt(playerScoreBox.textContent) 
+        playerScoreBox.textContent = ++currentPlayerScore;
+        if (currentPlayerScore === MAX_SCORE) {
+            declareWinner(winner);
+            return;
+        }
     } else {
-        computerScore.textContent = parseInt(computerScore.textContent) + 1;
+        let currentComputerScore = parseInt(computerScoreBox.textContent);
+        computerScoreBox.textContent = ++currentComputerScore;
+        if (currentComputerScore === MAX_SCORE) {
+            declareWinner(winner);
+            return;
+        }
     }
 
 }
 
+function declareWinner(winner) {
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => {
+        option.removeEventListener('click', playRound);
+    });
+    showWinner(winner);
+}
+
+function playRound() {
+    const playerChoice = this.id;
+    const computerChoice = getComputerChoice();
+    const displayMessage = document.querySelector('.display-message p');
+    displayMessage.textContent = showRoundWinner(playerChoice, computerChoice);
+    updateScoreBoard(findWinner(playerChoice, computerChoice));
+}
+
 const options = document.querySelectorAll('.option');
 options.forEach(option => {
-    option.addEventListener('click', (e) => {
-        const playerChoice = option.id;
-        const computerChoice = getComputerChoice();
-        const displayMessage = document.querySelector('.display-message p');
-
-        displayMessage.textContent = playRound(playerChoice, computerChoice);
-        updateScoreBoard(findWinner(playerChoice, computerChoice));
-    });
+    option.addEventListener('click', playRound);
 });
+
