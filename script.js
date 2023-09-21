@@ -95,8 +95,20 @@ function playRound() {
     updateScoreBoard(findWinner(playerChoice, computerChoice));
 }
 
+function resetGame() {
+    const scoreBoxes = document.querySelectorAll('.score-box');
+    const displayMessage = document.querySelector('.display-message p');
+    const options = document.querySelectorAll('.option');
+    scoreBoxes.forEach(box => box.textContent = 0);
+    displayMessage.textContent = 'Choose between Rock, Paper and Scissors!';
+    options.forEach(option => option.addEventListener('click', playRound));
+}
+
 const options = document.querySelectorAll('.option');
 options.forEach(option => {
     option.addEventListener('click', playRound);
 });
+
+const resetButton = document.querySelector('.reset-btn');
+resetButton.addEventListener('click', resetGame);
 
