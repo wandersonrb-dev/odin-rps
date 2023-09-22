@@ -79,8 +79,14 @@ function playRound() {
     const computerChoice = getComputerChoice();
     const displayMessage = document.querySelector('.display-message p');
     removeBorders();
-    addBorder(playerChoice, 'purple');
-    addBorder(computerChoice, 'red')
+    if (playerChoice === computerChoice) 
+    {
+        addDoubleBorders(playerChoice);
+    } else {
+        addBorder(playerChoice, 'purple');
+        addBorder(computerChoice, 'red');
+    }
+
     displayMessage.textContent = showRoundWinner(playerChoice, computerChoice);
     updateScoreBoard(findWinner(playerChoice, computerChoice));
 }
@@ -99,10 +105,14 @@ function addBorder(option, color) {
     document.querySelector(`#${option}`).classList.add(`${color}`);
 }
 
+function addDoubleBorders(option) {
+    document.querySelector(`#${option}`).classList.add(`double-border`);
+}
+
 function removeBorders() {
     const options = document.querySelectorAll('.option')
     options.forEach(option => {
-        option.classList.remove('purple', 'red');
+        option.classList.remove('purple', 'red', 'double-border');
     });
 }
 
