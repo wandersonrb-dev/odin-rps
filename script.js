@@ -71,6 +71,7 @@ function declareWinner(winner) {
     options.forEach(option => {
         option.removeEventListener('click', playRound);
     });
+    toogleGameOptions();
     showWinner(winner);
 }
 
@@ -99,6 +100,7 @@ function resetGame() {
     displayMessage.textContent = 'Choose between Rock, Paper and Scissors!';
     options.forEach(option => option.addEventListener('click', playRound));
     removeBorders();
+    toogleGameOptions();
 }
 
 function addBorder(option, color) {
@@ -113,6 +115,13 @@ function removeBorders() {
     const options = document.querySelectorAll('.option')
     options.forEach(option => {
         option.classList.remove('purple', 'red', 'double-border');
+    });
+}
+
+function toogleGameOptions() {
+    const options = document.querySelectorAll('.option')
+    options.forEach(option => {
+        option.classList.toggle('disabled');
     });
 }
 

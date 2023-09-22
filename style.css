@@ -142,3 +142,7 @@ body {
   right: 1px;
   bottom: 1px;
 }
+
+.disabled {
+  opacity: 50%;
+}
